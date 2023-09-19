@@ -48,6 +48,17 @@ for i in range(num_instances):
     )
 
 output_yaml = template.to_yaml()
+app_name: "MyCloudServiceManager"
+environment: "production"
+region: "us-east-1"
+database:
+  name: "mydb"
+  username: "admin"
+  password: "yourpassword"
+  endpoint: "mydb-instance.cwobxwnnzx4r.us-east-1.rds.amazonaws.com"
+logging:
+  enabled: true
+  level: "info"
 
 with open("ec2_instances.yaml", "w") as f:
     f.write(output_yaml)
