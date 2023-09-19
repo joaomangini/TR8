@@ -1,0 +1,47 @@
+Parameters:
+  InstanceType:
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - t2.medium
+    Default: t2.micro
+    Description: Tipo da instância EC2
+    Type: String
+Resources:
+  EC2Instance1:
+    Properties:
+      InstanceType: !Ref 'InstanceType'
+      KeyName: Leo
+      SecurityGroups:
+        - !Ref 'EC2SecurityGroup'
+      UserData: ''
+    Type: AWS::EC2::Instance
+  EC2Instance2:
+    Properties:
+      InstanceType: !Ref 'InstanceType'
+      KeyName: Leo
+      SecurityGroups:
+        - !Ref 'EC2SecurityGroup'
+      UserData: ''
+    Type: AWS::EC2::Instance
+  EC2Instance3:
+    Properties:
+      InstanceType: !Ref 'InstanceType'
+      KeyName: Leo
+      SecurityGroups:
+        - !Ref 'EC2SecurityGroup'
+      UserData: ''
+    Type: AWS::EC2::Instance
+  EC2SecurityGroup:
+    Properties:
+      GroupDescription: Permite tráfego SSH e HTTP
+      SecurityGroupIngress:
+        - CidrIp: '0.0.0.0/0'
+          FromPort: '22'
+          IpProtocol: tcp
+          ToPort: '22'
+        - CidrIp: '0.0.0.0/0'
+          FromPort: '80'
+          IpProtocol: tcp
+          ToPort: '80'
+    Type: AWS::EC2::SecurityGroup
